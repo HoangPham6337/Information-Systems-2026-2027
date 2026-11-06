@@ -1,5 +1,6 @@
 USTH Information Systems 2026
 =============================
 
-* Your name here
-* Your ID here
+- Pham Xuan Hoang
+- 2640009
+
