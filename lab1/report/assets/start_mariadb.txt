@@ -1,0 +1,27 @@
+$ systemctl start mariadb.service
+# to enable autostart: systemctl enable --now mariadb.service
+
+mariadb.service - MariaDB 12.3.3 database server
+     Loaded: loaded (/usr/lib/systemd/system/mariadb.service; disabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/mariadb.service.d
+             - galera.conf
+     Active: active (running) since Tue 2026-11-03 19:28:18 +07; 20min ago
+ Invocation: bc818816bfc24687a87d910b6eb02a78
+       Docs: man:mariadbd(8)
+             https://mariadb.com/docs/server/server-management/starting-and-stopping-mariadb/systemd
+   Main PID: 677018 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 13 (limit: 312392)
+     Memory: 283.9M (peak: 448.9M)
+        CPU: 34.569s
+     CGroup: /system.slice/mariadb.service
+             - 677018 /usr/bin/mariadbd
+
+Nov 03 19:28:17 ga401qh mariadbd[677018]: 2026-11-03 19:28:17 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+Nov 03 19:28:17 ga401qh mariadbd[677018]: 2026-11-03 19:28:17 0 [Note] InnoDB: Buffer pool(s) load completed at 261103 19:28:17
+Nov 03 19:28:18 ga401qh mariadbd[677018]: 2026-11-03 19:28:18 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+Nov 03 19:28:18 ga401qh mariadbd[677018]: 2026-11-03 19:28:18 0 [Note] Server socket created on IP: '::', port: '3306'.
+Nov 03 19:28:18 ga401qh mariadbd[677018]: 2026-11-03 19:28:18 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+Nov 03 19:28:18 ga401qh mariadbd[677018]: 2026-11-03 19:28:18 0 [Note] /usr/bin/mariadbd: ready for connections.
+Nov 03 19:28:18 ga401qh mariadbd[677018]: Version: '12.3.3-MariaDB'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Arch Linux
+Nov 03 19:28:18 ga401qh systemd[1]: Started MariaDB 12.3.3 database server.

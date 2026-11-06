@@ -1,0 +1,15 @@
+$ mariadb
+MariaDB [(none)]> SELECT User, Host, plugin, authentication_string FROM mysql.user;
++--------------+-----------+-----------------------+-------------------------+
+| User         | Host      | plugin                | authentication_string   |
++--------------+-----------+-----------------------+-------------------------+
+| mariadb.sys  | localhost | mysql_native_password |                         |
+| root         | localhost | mysql_native_password | invalid                 |
+| mysql        | localhost | mysql_native_password | invalid                 |
+| PUBLIC       |           |                       |                         |
+|              | localhost |                       |                         |
+|              | ga401qh   |                       |                         |
+| tom-maverick | localhost | unix_socket           |                         |
+| tabularis    | localhost | mysql_native_password | *231C7F49C35D199B57781B |
++--------------+-----------+-----------------------+-------------------------+
+8 rows in set (0.001 sec)

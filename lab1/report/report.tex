@@ -1,0 +1,67 @@
+\documentclass{assignment}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\begin{document}
+\assignmentTitle{Pham Xuan
+Hoang}{2640009}{assets/usth\_logo.png}{Information Systems}{Labwork 1}
+
+\section*{Section 1: Installing MySQL}
+I use CachyOS, a Linux distribution based on Arch Linux, so MySQL is
+not available in the default package manager. I can install it
+through the AUR (Arch User Repository) but I opted to use MariaDB, an
+open source alternative (forked from MySQL).
+
+On Arch, MariaDB is currently at version 13.x, which is newer than
+the version that the test database is validated against (up to 12.x).
+Therefore, I chose the lts (long-term support) version which is
+currently at 12.x. I installed it
+through \texttt{shelly} (a wrapper for \texttt{pacman}). And there
+are some additional setup that is required to setup the database on
+the system
+(\href{https://wiki.archlinux.org/title/MariaDB\#Installation}{MariaDB
+Installation on Arch wiki}).
+
+\lstinputlisting[language=cli]{assets/install\_mariadb.txt}
+
+Then I can start the service and check if the server is up and
+listening on \texttt{0.0.0.0}.
+
+\lstinputlisting[language=cli]{assets/start\_mariadb.txt}
+
+\section*{Section 2: Set up account}
+With the database up and running, I need to set up access on local
+machine next. The first run required \texttt{sudo mariadb} because
+only \texttt{root} and \texttt{mysql} account have access to the database.
+
+I created a user with the same name as my local account so I
+do not have to type \texttt{sudo} every time when I access the
+database from my local machine.
+
+\lstinputlisting[language=sql]{assets/create_main_user_mariadb.sql}
+
+I also created another account for \texttt{tabularis}, an open source
+GUI database client that I use.
+
+\lstinputlisting[language=sql]{assets/create_client_user_mariadb.sql}
+
+And we can check whether our account is set up correctly:
+
+\lstinputlisting[language=sql]{assets/user\_check.txt}
+
+\section*{Section 3: Import test data into MariaDB}
+With the set up finished, I can init the database with
+\texttt{test\_db} data and verify the correctness by running the SHA2 test.
+
+\lstinputlisting[language=cli]{assets/import\_data.txt}
+
+And then we can use \texttt{mariadb} client to check the table within
+the \texttt{employees} database.
+
+\lstinputlisting[language=sql]{assets/check\_data.txt}
+\end{document}
