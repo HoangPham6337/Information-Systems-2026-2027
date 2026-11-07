@@ -1,0 +1,77 @@
+\documentclass{assignment}
+\usepackage{enumitem}
+
+\begin{document}
+\assignmentTitle{Pham Xuan Hoang}{2640009}{assets/usth_logo.png}%
+{Information Systems}{Labwork 2}
+
+Consider this schema:
+\begin{itemize}[noitemsep]
+    \item \texttt{employees(emp\_no, birth\_date, first\_name,
+        last\_name, gender)}
+    \item \texttt{departments(dept\_no, dept\_name)}
+    \item \texttt{dept\_emp(emp\_no, dept\_no, from\_date, to\_date)}
+    \item \texttt{dept\_manager(dept\_no, emp\_no, from\_date, to\_date)}
+    \item \texttt{titles(emp\_no, title, from\_date, to\_date)}
+    \item \texttt{salaries(emp\_no, salary, from\_date, to\_date)}
+\end{itemize}
+
+Write relational algebra expressions for the following queries (use a
+pen and paper…)
+
+\begin{itemize}[nolistsep]
+    \item All info of all employees: $\mathit{employees}$
+    \item All info of all departments: $\mathit{departments}$
+    \item Full name of all employees: $\pi_{\mathit{first\_name},
+        \mathit{last\_name}}(\mathit{employees})$
+    \item Full name of all departments:
+        $\pi_{\mathit{dept\_name}}(\mathit{departments})$
+    \item Full names of employees working in 'ICT' department:
+        \[\pi_{\mathit{first\_name},
+            \mathit{last\_name}}(\sigma_{\mathit{dept\_name} =
+                \texttt{'ICT'}}(\mathit{employees} \bowtie
+        \mathit{dept\_emp} \bowtie \mathit{departments}))\]
+    \item Full names of male employees working in 'BIO' department:
+        \[\pi_{\mathit{first\_name},
+            \mathit{last\_name}}(\sigma_{\mathit{dept\_name} =
+                    \texttt{'BIO'} \land \mathit{gender} =
+                \texttt{'M'}}(\mathit{employees} \bowtie
+        \mathit{dept\_emp} \bowtie \mathit{departments}))\]
+    \item Salaries of female employees working in 'WEO' department
+        \[\pi_{\mathit{salary}}(\sigma_{\mathit{dept\_name} =
+                    \texttt{'WEO'} \land \mathit{gender} =
+                \texttt{'F'}}(\mathit{employees} \bowtie
+                    \mathit{dept\_emp} \bowtie
+                    \mathit{departments} \bowtie
+        \pi_{\mathit{emp\_no}, \mathit{salary}}(\mathit{salaries})))\]
+    \item Full names of employees who have the same last name as their manager
+        \begin{equation*}
+            \begin{split}
+                &\pi_{\mathit{first\_name}, \mathit{last\_name}} \Big(
+                    (\mathit{employees} \bowtie \mathit{dept\_emp}) \\
+                    &\quad\bowtie_{\mathit{dept\_no} = \mathit{m\_dept}
+                        \land \mathit{last\_name} = \mathit{ln\_name}
+                    \land \mathit{emp\_no} \neq \mathit{m\_no}} \\
+                    &\quad\rho_{\mathit{m\_no}/\mathit{emp\_no},
+                        \mathit{m\_dept}/\mathit{dept\_no},
+                    \mathit{ln\_name}/\mathit{last\_name}}
+                    \big( \\
+                        &\qquad\pi_{\mathit{emp\_no},\mathit{dept\_no},\mathit{last\_name}}(\mathit{employees}
+                    \bowtie \mathit{dept\_manager})\big)
+                \Big)
+            \end{split}
+        \end{equation*}
+    \item Full names of employees who was paid more than \$100000
+        \[ \pi_{\mathit{first\_name},
+            \mathit{last\_name}}\Big(\sigma_{\mathit{salary} >
+                100000}(\mathit{employees} \bowtie \pi_{\mathit{emp\_no},
+        \mathit{salary}}(\mathit{salaries}))\Big) \]
+    \item Names of all departments that have employees paid more
+        than \$100000
+        \[ \pi_{\mathit{dept\_name}}\Big(\sigma_{\mathit{salary} >
+                100000}(\mathit{dept\_emp} \bowtie
+                    \pi_{\mathit{emp\_no},
+                    \mathit{salary}}(\mathit{salaries}) \bowtie
+        \mathit{departments})\Big) \]
+\end{itemize}
+\end{document}
