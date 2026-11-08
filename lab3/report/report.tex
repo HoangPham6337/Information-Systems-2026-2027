@@ -1,0 +1,114 @@
+\documentclass{assignment}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\begin{document}
+\assignmentTitle{Pham Xuan Hoang}{2640009}{assets/usth_logo.png}%
+{Information Systems}{Labwork 3}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{assets/employees_schema.png}
+    \caption{\texttt{employees} database schema}
+\end{figure}
+
+\section*{Database queries}
+Write SQL queries to get the following information:
+
+\begin{itemize}[noitemsep]
+    \item All info of all employees (output shortened)
+        \lstinputlisting[language=sql]{assets/employee_info.sql}
+        Output:
+        \lstinputlisting[style=output]{assets/employee_info_output.txt}
+    \item All info of all departments
+        \lstinputlisting[language=sql]{assets/department_info.sql}
+        Output:
+        \lstinputlisting[style=output]{assets/department_info_output.txt}
+    \item Full name of all employees (output shortened)
+        \lstinputlisting[language=sql]{assets/employee_full_name.sql}
+        Output:
+        \lstinputlisting[style=output]{assets/employee_full_name_output.txt}
+    \item Names of all departments
+        \lstinputlisting[language=sql]{assets/department_name.sql}
+        Output:
+        \lstinputlisting[style=output]{assets/department_name_output.txt}
+    \item Full names of employees working in `Sales' department
+        (output shortened)
+        \lstinputlisting[language=sql, firstline=3,
+        lastline=9]{assets/advanced_stuff.sql}
+        Output:
+        \lstinputlisting[style=output, firstline=1,
+        lastline=11]{assets/advanced_stuff_output.txt}
+    \item Full names of male employees working in `Finance'
+        department (output shortened)
+        \lstinputlisting[language=sql, firstline=12,
+        lastline=18]{assets/advanced_stuff.sql}
+        Output:
+        \lstinputlisting[style=output, firstline=12,
+        lastline=24]{assets/advanced_stuff_output.txt}
+    \item Salaries of female employees working in `Marketing'
+        department (output shortened)
+        \lstinputlisting[language=sql, firstline=21,
+        lastline=29]{assets/advanced_stuff.sql}
+        \vfill
+        \newpage
+        Output:
+        \lstinputlisting[style=output, firstline=25,
+        lastline=40]{assets/advanced_stuff_output.txt}
+    \item Full names of employees who have the same last name as
+        their manager (output shortened)
+        \lstinputlisting[language=sql, firstline=32,
+        lastline=37]{assets/advanced_stuff.sql}
+        Output:
+        \lstinputlisting[style=output, firstline=41,
+        lastline=53]{assets/advanced_stuff_output.txt}
+    \item Full names of managers who have been doing the job at least twice
+        \lstinputlisting[language=sql, firstline=40,
+        lastline=44]{assets/advanced_stuff.sql}
+        Output:
+        \lstinputlisting[style=output, firstline=54,
+        lastline=54]{assets/advanced_stuff_output.txt}
+    \item Full names of employees who was paid more than \$100000
+        \lstinputlisting[language=sql, firstline=47,
+        lastline=52]{assets/advanced_stuff.sql}
+        Output:
+        \lstinputlisting[style=output, firstline=54,
+        lastline=68]{assets/advanced_stuff_output.txt}
+    \item Names of all departments that have employees paid more than \$100000
+        \lstinputlisting[language=sql, firstline=55,
+        lastline=60]{assets/advanced_stuff.sql}
+        Output:
+        \lstinputlisting[style=output, firstline=69,
+        lastline=81]{assets/advanced_stuff_output.txt}
+\end{itemize}
+
+\section*{Merged departments}
+Due to changes in company's organization, the following departments are merged:
+\begin{itemize}
+    \item Development (\texttt{d005}) and Research (\texttt{d008})
+        $\to$ Research and
+        Development (\texttt{d010})
+    \item Marketing (\texttt{d001}) and Sales (\texttt{d007}) $\to$
+        Marketing and Sales (\texttt{d011})
+\end{itemize}
+Necessary SQL queries to implement these changes to the
+employees database:
+\begin{itemize}[noitemsep]
+    \item Create new departments: \texttt{d005}, \texttt{d008} $\to$
+        \texttt{d010} and \texttt{d001}, \texttt{d007} $\to$ \texttt{d011}
+        \lstinputlisting[language=sql, firstline=5,
+        lastline=6]{assets/merged_departments.sql}
+    \item End employee current term
+        \lstinputlisting[language=sql, firstline=12,
+        lastline=16]{assets/merged_departments.sql}
+    \item Assign employees from \texttt{d005}, \texttt{d008} $\to$ \texttt{d010}
+        \lstinputlisting[language=sql, firstline=19,
+        lastline=26]{assets/merged_departments.sql}
+    \item Assign employees from \texttt{d001}, \texttt{d007} $\to$ \texttt{d011}
+        \lstinputlisting[language=sql, firstline=29,
+        lastline=36]{assets/merged_departments.sql}
+    \item Same for manager
+        \lstinputlisting[language=sql, firstline=39,
+        lastline=61]{assets/merged_departments.sql}
+\end{itemize}
+\end{document}

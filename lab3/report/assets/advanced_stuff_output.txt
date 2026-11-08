@@ -1,0 +1,81 @@
++--------------+-------------------------------+
+| emp_no_sales | full_name                     |
++--------------+-------------------------------+
+|        10002 | Bezalel Simmel                |
+|        10016 | Kazuhito Cappelletti          |
+|        10034 | Bader Swan                    |
+|        10041 | Uri Lenart                    |
+|        10050 | Yinghua Dredge                |
+|        10053 | Sanjiv Zschoche               |
+|        10060 | Breannda Billingsley          |
++--------------+-------------------------------+
++--------------+------------------------------+
+| emp_no_sales | full_name                    |
++--------------+------------------------------+
+|        10050 | Yinghua Dredge               |
+|        10080 | Premal Baek                  |
+|        10132 | Ayakannu Skrikant            |
+|        10144 | Marla Brendel                |
+|        10146 | Chenyi Syang                 |
+|        10147 | Kazuhito Encarnacion         |
+|        10165 | Miyeon Macedo                |
+|        10173 | Shrikanth Mahmud             |
+|        10177 | Pragnesh Iisaka              |
++--------------+------------------------------+
++--------+--------+-----------------------------+
+| emp_no | salary | full_name                   |
++--------+--------+-----------------------------+
+|  10017 |  71380 | Cristinel Bouloucos         |
+|  10017 |  75538 | Cristinel Bouloucos         |
+|  10017 |  79510 | Cristinel Bouloucos         |
+|  10017 |  82163 | Cristinel Bouloucos         |
+|  10017 |  86157 | Cristinel Bouloucos         |
+|  10017 |  89619 | Cristinel Bouloucos         |
+|  10017 |  91985 | Cristinel Bouloucos         |
+|  10017 |  96122 | Cristinel Bouloucos         |
+|  10017 |  98522 | Cristinel Bouloucos         |
+|  10017 |  99651 | Cristinel Bouloucos         |
+|  10140 |  61352 | Yucel Auria                 |
+|  10140 |  61609 | Yucel Auria                 |
++--------+--------+-----------------------------+
++------------------------+
+| full_name              |
++------------------------+
+| Herbert Markovitch     |
+| Zita Markovitch        |
+| Khun Markovitch        |
+| Nalini Markovitch      |
+| Sibyl Markovitch       |
+| JoAnne Markovitch      |
+| Weiru Markovitch       |
+| Kerhong Markovitch     |
+| Baocai Markovitch      |
++------------------------+
++-----------------------------+
+| full_name                   |
++-----------------------------+
+| Kwee Schusler               |
+| Charlene Brattka            |
+| Xinglin Eugenio             |
+| Dung Baca                   |
+| Zissis Pintelas             |
+| Zhenbing Perng              |
+| Itzchak Lichtner            |
+| Debatosh Khasidashvili      |
+| Shrikanth Mahmud            |
+| Duro Sidhu                  |
+| Marko Auria                 |
++-----------------------------+
++--------------------+
+| dept_name          |
++--------------------+
+| Customer Service   |
+| Development        |
+| Finance            |
+| Human Resources    |
+| Marketing          |
+| Production         |
+| Quality Management |
+| Research           |
+| Sales              |
++--------------------+

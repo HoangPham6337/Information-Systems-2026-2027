@@ -1,0 +1,11 @@
++--------+------------------------+
+| emp_no | full_name              |
++--------+------------------------+
+|  10001 | Georgi Facello         |
+|  10002 | Bezalel Simmel         |
+|  10003 | Parto Bamford          |
+|  10004 | Chirstian Koblick      |
+|  10005 | Kyoichi Maliniak       |
+|  10006 | Anneke Preusig         |
++--------+------------------------+
+
