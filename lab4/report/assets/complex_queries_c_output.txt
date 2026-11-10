@@ -1,0 +1,33 @@
+No output
++--------+----------------+------------------+
+| emp_no | first_name     | last_name        |
++--------+----------------+------------------+
+|  10024 | Suzette        | Pettey           |
+|  10218 | Zhenhua        | Magalhaes        |
+|  10267 | Shaunak        | Cullers          |
+|  10284 | Masali         | Murrill          |
+|  10298 | Dietrich       | DuCasse          |
+|  10552 | Kazuhito       | Shiratori        |
+|  10684 | Aimee          | Tokunaga         |
++--------+----------------+------------------+
++--------------------+------------+
+| dept_name          | avg_salary |
++--------------------+------------+
+| Sales              | 80718.3963 |
+| Marketing          | 71907.8664 |
+| Finance            | 70828.9095 |
+| Research           | 59999.0935 |
+| Production         | 59700.3958 |
+| Development        | 59391.6657 |
+| Customer Service   | 57628.9506 |
+| Quality Management | 57276.5570 |
+| Human Resources    | 55136.3614 |
++--------------------+------------+
++--------------------+------------+
+| title              | avg_salary |
++--------------------+------------+
+| Senior Engineer    | 64729.9696 |
+| Engineer           | 54859.3469 |
+| Assistant Engineer | 54104.0625 |
++--------------------+------------+
+
