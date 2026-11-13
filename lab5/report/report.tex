@@ -249,8 +249,8 @@ So we can deduce the concepts that need to be stored:
 
 \paragraph{Step 3:} Determine links between the concepts
 \begin{itemize}[noitemsep]
-    \item Order and Product
-    \item Customer and Order (has)
+    \item Order and Product (has, many-to-many)
+    \item Customer and Order (has, one-to-many)
 \end{itemize}
 
 \begin{figure}[H]
@@ -314,4 +314,146 @@ add table for many-to-many links
     \caption{Order database schema normalized to 3NF}
 \end{figure}
 
+\section*{Labwork 1}
+
+\begin{framed}
+    You need a database to manage information about the magazines that
+    you buy habitually.\\
+
+    For each magazine, its title, the ISSN (code that identifies the
+    publication), number and year are stored. You also need data about
+    the articles, including its title, page of beginning and page of
+    ending. It is assumed that there are no two articles with the same title.\\
+
+    Every article can be written by several authors, whose name, email
+    address and ascription are stored. Besides, a number that indicates
+    the order of has to be stored.
+\end{framed}
+
+\paragraph{Step 1:} Raw requirments:
+\begin{framed}
+   \begin{verbatim}
+Magazine(
+  title, ISSN, number, year,
+  Articles{
+    title(distinct), pageOfBeginning, pageOfEnding,
+    Author{
+      name, email, ascription, orderNo
+    }
+  }
+)
+\end{verbatim}
+\end{framed}
+
+We can deduce the concepts that need to be stored:
+\begin{itemize}[noitemsep]
+    \item Magazine
+    \item Article
+    \item Author
+\end{itemize}
+
+\paragraph{Step 2:} Determine attributes of each concepts
+\\
+
+\noindent
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Magazine
+            \begin{itemize}[noitemsep]
+                \item \texttt{magazineId}
+                \item \texttt{title}
+                \item \texttt{ISSN}
+                \item \texttt{number}
+                \item \texttt{year}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Article
+            \begin{itemize}[noitemsep]
+                \item \texttt{articleId}
+                \item \texttt{pageOfBeginning}
+                \item \texttt{pageOfEnding}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Author
+            \begin{itemize}[noitemsep]
+                \item \texttt{authorId}
+                \item \texttt{name}
+                \item \texttt{email}
+                \item \texttt{ascription}
+                \item \texttt{orderNo}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/magazine_step_2.pdf}
+    \caption{Magazine database concepts with attributes}
+\end{figure}
+
+\paragraph{Step 3:} Determine links between the concepts
+\begin{itemize}[noitemsep]
+    \item Magazine and Article (has, one-to-many)
+    \item Article and Author (written by, many-to-many)
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/magazine_link.pdf}
+    \caption{Magazine's links between concepts}
+\end{figure}
+
+\paragraph{Step 4:} Determine types of each concept attribute\\
+
+\noindent
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Magazine
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{magazineId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{title}: {\small\texttt{VARCHAR(100)}}
+                \item \texttt{ISSN}: {\small\texttt{CHAR(8)}}
+                \item \texttt{number}: {\small\texttt{INT}}
+                \item \texttt{year}: {\small\texttt{INT}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep, leftmargin=1em]
+        \item Article
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{articleId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{pageOfBeginning}: {\small\texttt{INT}}
+                \item \texttt{pageOfEnding}: {\small\texttt{INT}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep, leftmargin=1em]
+        \item Author
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{authorId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{name}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{email}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{ascription}: {\small\texttt{VARCHAR(100)}}
+                \item \texttt{orderNo}: {\small\texttt{INT}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/magazine_step_4.pdf}
+    \caption{Order's concepts with links and attributes}
+\end{figure}
 \end{document}

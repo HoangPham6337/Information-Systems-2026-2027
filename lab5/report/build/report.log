@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.11.8)  13 NOV 2026 15:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.11.6)  13 NOV 2026 17:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -899,12 +899,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has 
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.253     \item C
-                 ustomer and Order (has)
+                 ustomer and Order (has, one-to-many)
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.253     \item C
-                 ustomer and Order (has) <./assets/order_step_2.pdf>]
+                 ustomer and Order (has, one-to-many) <./assets/order_step_2.pdf>]
 <assets/order_link.pdf, id=58, 551.1792pt x 131.53139pt>
 File: assets/order_link.pdf Graphic file (type pdf)
 <use assets/order_link.pdf>
@@ -929,18 +929,74 @@ Package pdftex.def Info: assets/computer_order.pdf  used on input line 313.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.317 \end{document}
+l.319 \begin{framed}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.317 \end{document}
+l.319 \begin{framed}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.317 \end{document}
-                     <./assets/order_link.pdf> <./assets/order_step_4.pdf> <./assets/computer_order.pdf>] (build/report.aux)
+l.319 \begin{framed}
+                     <./assets/order_link.pdf> <./assets/order_step_4.pdf> <./assets/computer_order.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 320--322
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--327
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--357
+
+ []
+
+<assets/magazine_step_2.pdf, id=113, 478.66827pt x 131.53139pt>
+File: assets/magazine_step_2.pdf Graphic file (type pdf)
+<use assets/magazine_step_2.pdf>
+Package pdftex.def Info: assets/magazine_step_2.pdf  used on input line 398.
+(pdftex.def)             Requested size: 435.32422pt x 119.62349pt.
+[5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.406 \end{itemize}
+                    <./assets/magazine_step_2.pdf>]
+<assets/magazine_link.pdf, id=136, 478.66827pt x 131.53139pt>
+File: assets/magazine_link.pdf Graphic file (type pdf)
+<use assets/magazine_link.pdf>
+Package pdftex.def Info: assets/magazine_link.pdf  used on input line 410.
+(pdftex.def)             Requested size: 435.32422pt x 119.62349pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 421--422
+[]\T1/zi4/m/n/10.95 magazineId\T1/lmr/m/n/10.95 :
+ []
+
+<assets/magazine_step_4.pdf, id=137, 522.03032pt x 131.53139pt>
+File: assets/magazine_step_4.pdf Graphic file (type pdf)
+<use assets/magazine_step_4.pdf>
+Package pdftex.def Info: assets/magazine_step_4.pdf  used on input line 456.
+(pdftex.def)             Requested size: 435.32422pt x 109.69083pt.
+[6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.459 \end{document}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.459 \end{document}
+                     <./assets/magazine_link.pdf> <./assets/magazine_step_4.pdf>] (build/report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -949,18 +1005,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28470 strings out of 467525
- 551595 string characters out of 5425861
+ 28503 strings out of 467525
+ 552494 string characters out of 5425861
  1063719 words of memory out of 5000000
- 56909 multiletter control sequences out of 15000+600000
+ 56932 multiletter control sequences out of 15000+600000
  675336 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,11n,122p,487b,1023s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on build/report.pdf (4 pages, 520332 bytes).
+Output written on build/report.pdf (6 pages, 592699 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
