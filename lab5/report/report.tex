@@ -3,6 +3,8 @@
 \usepackage{graphicx}
 \usepackage{tabularray}
 \usepackage{etoolbox}
+\usepackage{float}
+\usepackage{framed}
 
 \BeforeBeginEnvironment{tblr}{
 \begin{center}}
@@ -27,172 +29,289 @@
 \section*{\texttt{employee} table}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\linewidth]{assets/employees_schema.png}
+    \includegraphics[width=0.5\linewidth]{assets/employees_schema.png}
     \caption{\texttt{employees} database schema}
 \end{figure}
 
-\paragraph{1NF.} Every column holds a single atomic value (no lists, no
-comma-separated values), and no table has repeated columns. In
-particular, histories are stored as \emph{rows}, not as columns: an
-employee's salaries are many rows of \texttt{salaries}, not columns
-\texttt{salary1}, \texttt{salary2}, \ldots{} Every table has a primary
-key, so no two rows are identical.
+\paragraph{1NF.} All column holds a single atomic value, there is no
+column that has a list of values and no table contains repeated
+columns. Every table has a primary key (some has a composite
+primary key) so there are no identical rows.
 
-\paragraph{2NF.} A partial dependency is only possible when the primary
-key is composite, so:
+\paragraph{2NF.} We can remove all the tables from the analysis that
+doesn't have a composite primary key first. They are automatically in 2NF form.
+
 \begin{itemize}[noitemsep]
-    \item \texttt{employees} (key \texttt{emp\_no}) and
-        \texttt{departments} (key \texttt{dept\_no}) have single-column
-        keys and are in 2NF automatically.
-    \item \texttt{dept\_emp} and \texttt{dept\_manager} each have one
-        composite primary key (\texttt{emp\_no}, \texttt{dept\_no}),
-        both columns also being foreign keys. \texttt{from\_date} and
-        \texttt{to\_date} need the whole key: \texttt{emp\_no} alone is
-        not enough (an employee who moved has a different period in each
-        department), and neither is \texttt{dept\_no} (a department has
-        many employees with different periods).
-    \item \texttt{titles} has the composite key (\texttt{emp\_no},
-        \texttt{title}, \texttt{from\_date}). \texttt{to\_date} needs all
-        three: one employee holds several titles, one title is held by
-        many employees, and \texttt{from\_date} distinguishes two
-        separate periods with the same title.
-    \item \texttt{salaries} has the composite key (\texttt{emp\_no},
-        \texttt{from\_date}). \texttt{salary} and \texttt{to\_date} need
-        both: \texttt{emp\_no} alone is not enough (an employee gets a
-        new salary every year), and neither is \texttt{from\_date}
-        (many employees get a raise on the same day with different
-        amounts).
+    \item \texttt{employees} only has 1 primary key \underline{\texttt{emp\_no}}
+    \item \texttt{departments} only has 1 primary key
+        \underline{\texttt{departments}}
+\end{itemize}
+
+\noindent Now we can analyze the tables with composite primary key.
+\begin{itemize}[noitemsep]
+    \item \texttt{dept\_emp} and \texttt{dept\_manager} tables each
+        have one composite primary key, both of them are also foreign key:
+        \underline{\texttt{emp\_no}} (links to \texttt{employees})
+        and \underline{\texttt{dept\_no}} (links to \texttt{departments}).
+        \texttt{from\_date} and \texttt{to\_date} need the full
+        composite foreign key to be identifiable
+        \begin{itemize}[noitemsep]
+            \item Remove \texttt{emp\_no}: the time frame collapses
+                into each department, we can no longer distinguish
+                the time frame of employee within a department.
+            \item Remove \texttt{dept\_no}: the time frame only links
+                with employees. If an employee changed department, we
+                cannot add a new row as the PK has already been populated.
+        \end{itemize}
+
+    \item \texttt{titles} tables has a composite key composed of
+        \underline{\texttt{emp\_no}}, \underline{\texttt{dept\_no}},
+        of which \underline{\texttt{emp\_no}} is the foreign key
+        linking to \texttt{employees}. The non-key attribtue
+        \texttt{to\_date} requires all of them to be distinct.
+        \begin{itemize}[noitemsep]
+            \item An employee can have multiple titles.
+            \item One title can be held by many employees.
+            \item An employee can leave a title then return, which is
+                why we need \texttt{from\_date}.
+        \end{itemize}
+
+    \item \texttt{salaries} has a composite primary key of
+        \underline{\texttt{emp\_no}} and
+        \underline{\texttt{from\_date}}. Again, the two
+        non-key columns \texttt{salary} and \texttt{to\_date} depend
+        on the entire composite key to be distinct.
+        \begin{itemize}[noitemsep]
+            \item Remove \texttt{emp\_no}: no way to tell which
+                employee get a raise.
+            \item Remove \texttt{from\_date}: multiple employee can
+                get a new salary at the same time in different amount.
+        \end{itemize}
 \end{itemize}
 
 \paragraph{3NF.} No non-key column determines another non-key column:
 \begin{itemize}[noitemsep]
-    \item \texttt{employees}: none of \texttt{birth\_date},
-        \texttt{first\_name}, \texttt{last\_name}, \texttt{gender},
-        \texttt{hire\_date} determines another. For example,
-        \texttt{first\_name} $\not\rightarrow$ \texttt{gender}: two
-        employees can share a first name and have different genders.
+    \item \texttt{employees}: none of determines another.
     \item \texttt{departments}: the only non-key column,
         \texttt{dept\_name}, is \texttt{UNIQUE}, so it is a second
         candidate key, not a transitive dependency.
     \item \texttt{dept\_emp}, \texttt{dept\_manager}: between
         \texttt{from\_date} and \texttt{to\_date}, neither determines
-        the other (the length of a period varies).
-    \item \texttt{titles} has a single non-key column (\texttt{to\_date}),
-        so it cannot have a transitive dependency.
-    \item \texttt{salaries}: \texttt{salary} $\not\rightarrow$
-        \texttt{to\_date} and \texttt{to\_date} $\not\rightarrow$
-        \texttt{salary}; the same amount can be paid over different
-        periods.
+        the other.
+    \item \texttt{titles}: single non-key column
+        (\texttt{to\_date}), so no transitive dependency.
+    \item \texttt{salaries}: \texttt{salary} has no connection to
+        \texttt{to\_date} and vice versa.
 \end{itemize}
 
-\begin{tblr}{colspec={|l|l|l|l|l|}, hlines}
-    Table & PK & {1NF: Columns with\\atomic value, no list\\in column}
-    & {2NF: Is there any
-    \\ composite key?} & {3NF: Are there any \\ non-key $\rightarrow$
-    non-key?} \\
+\noindent \textbf{All of the points above can be summarized into the
+table below}
 
-    \texttt{employees} & \underline{\texttt{emp\_no}}
-    & {\texttt{birth\_date}, \texttt{first\_name}, \\
-    \texttt{last\_name}, \texttt{gender},\\\texttt{hire\_date}} &
-    None, only \underline{\texttt{emp\_no}} & {None, all attributes
-    \\ depend on \underline{\texttt{emp\_no}}} \\
+\begin{table}[H]
+    \begin{tblr}{colspec={|l|l|l|l|l|}, hlines}
+        Table & PK & {1NF: Columns with\\atomic value, no list\\in column}
+        & {2NF: Is there any
+        \\ composite key?} & {3NF: Are there any \\ non-key $\rightarrow$
+        non-key?} \\
 
-    \texttt{departments} & \underline{\texttt{dept\_no}} &
-    \texttt{dept\_name} & None, only \underline{\texttt{dept\_no}} &
-    {None, only one attribute\\ and one primary key}\\
+        \texttt{employees} & \underline{\texttt{emp\_no}}
+        & {\texttt{birth\_date}, \texttt{first\_name}, \\
+        \texttt{last\_name}, \texttt{gender},\\\texttt{hire\_date}} &
+        None, only \underline{\texttt{emp\_no}} & {None, all attributes
+        \\ depend on \underline{\texttt{emp\_no}}} \\
 
-    \texttt{dept\_emp} &
-    {\underline{\texttt{emp\_no}}\\\underline{\texttt{dept\_no}}}
-    & \texttt{from\_date}, \texttt{to\_date} & {1 composite
-        PK \underline{\texttt{dept\_no}} \\and
-        \underline{\texttt{emp\_no}}, both
-    are\\ primary keys and both\\are foreign keys too} & {None,
-    \texttt{from\_date} and\\ \texttt{to\_date} are independent} \\
+        \texttt{departments} & \underline{\texttt{dept\_no}} &
+        \texttt{dept\_name} & None, only \underline{\texttt{dept\_no}} &
+        {None, only one attribute\\ and one primary key}\\
 
-    \texttt{dept\_manager} &
-    {\underline{\texttt{emp\_no}}\\\underline{\texttt{dept\_no}}}
-    & \texttt{from\_date}, \texttt{to\_date} & Same as \texttt{dept\_emp} &
-    Same as \texttt{dept\_emp}\\
+        \texttt{dept\_emp} &
+        {\underline{\texttt{emp\_no}}\\\underline{\texttt{dept\_no}}}
+        & \texttt{from\_date}, \texttt{to\_date} & {1 composite
+            PK \underline{\texttt{dept\_no}} \\and
+            \underline{\texttt{emp\_no}}, both
+        are\\ primary keys and both\\are foreign keys too} & {None,
+        \texttt{from\_date} and\\ \texttt{to\_date} are independent} \\
 
-    \texttt{titles} &
-    {\underline{\texttt{emp\_no}}
-        \\ \underline{\texttt{title}}
-    \\ \underline{\texttt{from\_date}}} & \texttt{to\_date} & {1
-        composite PK \underline{\texttt{emp\_no}},\\
-        \underline{\texttt{title}} and
-        \underline{\texttt{from\_date}}\\with
-    \underline{\texttt{emp\_no}} is also a\\foreign key} & {None,
-    \texttt{to\_date} depends\\on the entire composite key} \\
+        \texttt{dept\_manager} &
+        {\underline{\texttt{emp\_no}}\\\underline{\texttt{dept\_no}}}
+        & \texttt{from\_date}, \texttt{to\_date} & Same as \texttt{dept\_emp} &
+        Same as \texttt{dept\_emp}\\
 
-    \texttt{salaries} & {\underline{\texttt{emp\_no}}
-    \\ \underline{\texttt{from\_date}}} & {\texttt{salary},
-    \texttt{to\_date}} & {1 composite key of\\
-        \underline{\texttt{emp\_no}} and \underline{\texttt{from\_date}}\\
-    with \underline{\texttt{emp\_no}} is also a\\foreign key} & {None,
-    \texttt{salary} and \texttt{to\_date}\\requires the entire composite\\key}\\
-\end{tblr}
+        \texttt{titles} &
+        {\underline{\texttt{emp\_no}}
+            \\ \underline{\texttt{title}}
+        \\ \underline{\texttt{from\_date}}} & \texttt{to\_date} & {1
+            composite PK \underline{\texttt{emp\_no}},\\
+            \underline{\texttt{title}} and
+            \underline{\texttt{from\_date}}\\with
+        \underline{\texttt{emp\_no}} is also a\\foreign key} & {None,
+        \texttt{to\_date} depends\\on the entire composite key} \\
 
-The \texttt{employee} database satisfies third normal form (3NF).
-\begin{enumerate}[noitemsep]
-    \item In all tables, each column contains atomic value and there
-        are no repeated columns within a table
-        $\rightarrow$ \texttt{employee} satisfies first normal form (1NF)
-    \item All non-key column depends on the primary keys:
-        \begin{itemize}
-            \item \texttt{employees} table: all attributes are
-                identified by the primary key \texttt{emp\_no}.
-            \item \texttt{titles} table: this table has a composite
-                primary key. It consists of \texttt{emp\_no},
-                \texttt{title} and \texttt{from\_date}. Of which,
-                \texttt{emp\_no} is also a foreign key linking
-                \texttt{titles} to \texttt{employees}.
-            \item \texttt{departments} table: this table contains a
-                primary key of \texttt{dept\_no} and attribute
-                \texttt{dept\_name} which is unique and depends on the
-                primary key.
-            \item \texttt{dept\_emp} and \texttt{dept\_manager} both
-                have two primary key which happen to be foreign key.
-                \texttt{emp\_no} links back to table
-                \texttt{employees} and \texttt{dept\_no} links back to
-                \texttt{departments}.
-        \end{itemize}
-    \item It has no transitive dependencies, all the non-key columns
-        depends on the key column.
-\end{enumerate}
+        \texttt{salaries} & {\underline{\texttt{emp\_no}}
+        \\ \underline{\texttt{from\_date}}} & {\texttt{salary},
+        \texttt{to\_date}} & {1 composite key of\\
+            \underline{\texttt{emp\_no}} and \underline{\texttt{from\_date}}\\
+        with \underline{\texttt{emp\_no}} is also a\\foreign key} & {None,
+            \texttt{salary} and \texttt{to\_date}\\requires the entire
+        composite\\key}\\
+    \end{tblr}
+    \caption{Normalization summary of the \texttt{employees} database}
+\end{table}
 
+\newpage
 \section*{Order form}
 Normalize the following document to 3NF
-\begin{center}
-    \begin{tabular}{|l|l|c|c|}
-        \hline
-        \multicolumn{4}{|c|}{Order Form} \\ \hline
-        \multicolumn{1}{|l}{Order number} & \multicolumn{3}{l|}{on7126} \\
-        \multicolumn{1}{|l}{Order date} & \multicolumn{3}{l|}{11/07/2016} \\
-        \multicolumn{1}{|l}{Customer name} & \multicolumn{3}{l|}{Tran
-        Giang Son} \\
-        \multicolumn{1}{|l}{Customer phone} & \multicolumn{3}{l|}{+84-4
-        37 91 69 60} \\
-        \multicolumn{1}{|l}{Customer address} & \multicolumn{3}{l|}{18
-        Hoang Quoc Viet} \\
-        \multicolumn{1}{|l}{City} & \multicolumn{3}{l|}{Hanoi,
-        Vietnam} \\ \hline
-        ProdId & Description & Quantity & Price \\ \hline
-        P101 & Intel i7 6700K & 1 & \$349 \\ \hline
-        P102 & ASUS Z170A-P & 1 & \$149 \\ \hline
-        P103 & Corsair DDR4 4 $\times$ 8GB & 1 & \$469 \\ \hline
-        P104 & Samsung EVO 850 512GB & 1 & \$249 \\ \hline
-        P105 & GeForce GTX 1080 8G & 1 & \$725 \\ \hline
-        P106 & Corsair CS750M 80+ Gold & 1 & \$119 \\ \hline
-        P107 & Corsair Carbide 400R Mid & 1 & \$85 \\ \hline
-    \end{tabular}
-\end{center}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|l|c|c|}
+            \hline
+            \multicolumn{4}{|c|}{Order Form} \\ \hline
+            \multicolumn{1}{|l}{Order number} & \multicolumn{3}{l|}{on7126} \\
+            \multicolumn{1}{|l}{Order date} & \multicolumn{3}{l|}{11/07/2016} \\
+            \multicolumn{1}{|l}{Customer name} & \multicolumn{3}{l|}{Tran
+            Giang Son} \\
+            \multicolumn{1}{|l}{Customer phone} & \multicolumn{3}{l|}{+84-4
+            37 91 69 60} \\
+            \multicolumn{1}{|l}{Customer address} & \multicolumn{3}{l|}{18
+            Hoang Quoc Viet} \\
+            \multicolumn{1}{|l}{City} & \multicolumn{3}{l|}{Hanoi,
+            Vietnam} \\ \hline
+            ProdId & Description & Quantity & Price \\ \hline
+            P101 & Intel i7 6700K & 1 & \$349 \\ \hline
+            P102 & ASUS Z170A-P & 1 & \$149 \\ \hline
+            P103 & Corsair DDR4 4 $\times$ 8GB & 1 & \$469 \\ \hline
+            P104 & Samsung EVO 850 512GB & 1 & \$249 \\ \hline
+            P105 & GeForce GTX 1080 8G & 1 & \$725 \\ \hline
+            P106 & Corsair CS750M 80+ Gold & 1 & \$119 \\ \hline
+            P107 & Corsair Carbide 400R Mid & 1 & \$85 \\ \hline
+        \end{tabular}
+    \end{center}
 
-\noindent Order database schema normalized to 3NF
+    \caption{Order form example}
+\end{table}
+
+\paragraph{Step 1:} Raw requirements from the order form:
+\begin{framed}
+    \texttt{Order(orderNo, date, customerName, customerPhone,
+    customerAddress, city, \{prodId, description, quantity, price\})}
+\end{framed}
+So we can deduce the concepts that need to be stored:
+\begin{itemize}[noitemsep]
+    \item Order
+    \item Customer
+    \item Product
+\end{itemize}
+
+\paragraph{Step 2:} Determine attributes of each concepts
+\\
+
+\noindent
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Customer
+            \begin{itemize}[noitemsep]
+                \item \texttt{customerId}
+                \item \texttt{name}
+                \item \texttt{phone}
+                \item \texttt{address}
+                \item \texttt{city}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Order
+            \begin{itemize}[noitemsep]
+                \item \texttt{orderNo}
+                \item \texttt{date}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Product
+            \begin{itemize}[noitemsep]
+                \item \texttt{productId}
+                \item \texttt{description}
+                \item \texttt{price}
+                \item \texttt{quantity}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/order_step_2.pdf}
+    \caption{Order database concepts with attributes}
+\end{figure}
+
+\paragraph{Step 3:} Determine links between the concepts
+\begin{itemize}[noitemsep]
+    \item Order and Product
+    \item Customer and Order (has)
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/order_link.pdf}
+    \caption{Order's links between concepts}
+\end{figure}
+
+\paragraph{Step 4:} Determine types of each concept attribute\\
+
+\noindent
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Customer
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{customerId}: {\small\texttt{INT}}
+                \item \texttt{name}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{phone}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{address}: {\small\texttt{VARCHAR(100)}}
+                \item \texttt{city}: {\small\texttt{VARCHAR(50)}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep, leftmargin=1em]
+        \item Order
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{orderNo}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{date}: {\small\texttt{DATE}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+    \begin{itemize}[noitemsep, leftmargin=1em]
+        \item Product
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{productId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{description}: {\small\texttt{VARCHAR(100)}}
+                \item \texttt{price}: {\small\texttt{INT}}
+                \item \texttt{quantity}: {\small\texttt{INT}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\linewidth]{assets/computer_order.pdf}
-    \caption{Order database schema}
+    \includegraphics[width=0.9\linewidth]{assets/order_step_4.pdf}
+    \caption{Order's concepts with links and attributes}
+\end{figure}
+
+\paragraph{Step 5:} Solve foreign key links
+
+\noindent Add primary key, add foreign key for one-to-many links and
+add table for many-to-many links
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/computer_order.pdf}
+    \caption{Order database schema normalized to 3NF}
 \end{figure}
 
 \end{document}

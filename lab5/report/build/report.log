@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.11.6)  12 NOV 2026 17:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.11.8)  13 NOV 2026 15:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -706,31 +706,45 @@ Package: xparse 2025-10-09 L3 Experimental document command parser
 \l__tblr_last_cell_table_dp_dim=\dimen353
 \l__tblr_last_vline_wd_dim=\dimen354
 \l__tblr_tikz_node_box=\box105
+) (/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count390
+\float@exts=\toks43
+\float@box=\box106
+\@float@everytoks=\toks44
+\@floatcapt=\box107
+) (/usr/share/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip56
+\fb@frw=\dimen355
+\fb@frh=\dimen356
+\FrameRule=\dimen357
+\FrameSep=\dimen358
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 23.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 25.
  (/usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (build/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -770,103 +784,163 @@ LaTeX Font Info:    ... okay on input line 23.
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
 ) (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count390
-\scratchdimen=\dimen355
-\scratchbox=\box106
-\nofMPsegments=\count391
-\nofMParguments=\count392
-\everyMPshowfont=\toks43
-\MPscratchCnt=\count393
-\MPscratchDim=\dimen356
-\MPnumerator=\count394
-\makeMPintoPDFobject=\count395
-\everyMPtoPDFconversion=\toks44
+\scratchcounter=\count391
+\scratchdimen=\dimen359
+\scratchbox=\box108
+\nofMPsegments=\count392
+\nofMParguments=\count393
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count394
+\MPscratchDim=\dimen360
+\MPnumerator=\count395
+\makeMPintoPDFobject=\count396
+\everyMPtoPDFconversion=\toks46
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count396
-Package hyperref Info: Link coloring ON on input line 23.
+\c@lstlisting=\count397
+Package hyperref Info: Link coloring ON on input line 25.
  (build/report.out) (build/report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 25.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 27.
  (/usr/share/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 25.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 27.
  (/usr/share/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 25.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 27.
  (/usr/share/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 25.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 27.
  (/usr/share/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 25.
+(Font)              <10.95> on input line 27.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 25.
+(Font)              <8> on input line 27.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 25.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+(Font)              <6> on input line 27.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <assets/usth_logo.png, id=7, 140.525pt x 70.2625pt>
 File: assets/usth_logo.png Graphic file (type png)
 <use assets/usth_logo.png>
-Package pdftex.def Info: assets/usth_logo.png  used on input line 25.
+Package pdftex.def Info: assets/usth_logo.png  used on input line 27.
 (pdftex.def)             Requested size: 113.81174pt x 56.9055pt.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 27.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 29.
  (/usr/share/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 14.4pt on input line 27.
+(Font)              scaled to size 14.4pt on input line 29.
 <assets/employees_schema.png, id=9, 791.20593pt x 733.23938pt>
 File: assets/employees_schema.png Graphic file (type png)
 <use assets/employees_schema.png>
-Package pdftex.def Info: assets/employees_schema.png  used on input line 30.
-(pdftex.def)             Requested size: 338.58632pt x 313.77637pt.
+Package pdftex.def Info: assets/employees_schema.png  used on input line 32.
+(pdftex.def)             Requested size: 241.84843pt x 224.12437pt.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.95pt on input line 31.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 44.
+(Font)              scaled to size 10.95pt on input line 33.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 45.
  (/usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc} <./assets/usth_logo.png> <./assets/employees_schema.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.74             \item O
+                        ne title can be held by many employees.{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc} <./assets/usth_logo.png> <./assets/employees_schema.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 133.
+(Font)              <10> on input line 157.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 133.
+(Font)              <7> on input line 157.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 133.
+(Font)              <5> on input line 157.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 10.0pt on input line 133.
+(Font)              scaled to size 10.0pt on input line 157.
 
-Overfull \hbox (7.42569pt too wide) in paragraph at lines 133--133
+Overfull \hbox (7.42569pt too wide) in paragraph at lines 157--157
  [] 
  []
 
-[2{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<assets/computer_order.pdf, id=36, 592.13219pt x 312.20638pt>
+[2{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.161 \newpage
+              ]
+Underfull \hbox (badness 10000) in paragraph at lines 205--207
+
+ []
+
+<assets/order_step_2.pdf, id=34, 551.1792pt x 131.53139pt>
+File: assets/order_step_2.pdf Graphic file (type pdf)
+<use assets/order_step_2.pdf>
+Package pdftex.def Info: assets/order_step_2.pdf  used on input line 246.
+(pdftex.def)             Requested size: 435.32422pt x 103.88657pt.
+[3
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.253     \item C
+                 ustomer and Order (has)
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.253     \item C
+                 ustomer and Order (has) <./assets/order_step_2.pdf>]
+<assets/order_link.pdf, id=58, 551.1792pt x 131.53139pt>
+File: assets/order_link.pdf Graphic file (type pdf)
+<use assets/order_link.pdf>
+Package pdftex.def Info: assets/order_link.pdf  used on input line 258.
+(pdftex.def)             Requested size: 435.32422pt x 103.88657pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--263
+
+ []
+
+<assets/order_step_4.pdf, id=59, 551.1792pt x 131.53139pt>
+File: assets/order_step_4.pdf Graphic file (type pdf)
+<use assets/order_step_4.pdf>
+Package pdftex.def Info: assets/order_step_4.pdf  used on input line 302.
+(pdftex.def)             Requested size: 435.32422pt x 103.88657pt.
+<assets/computer_order.pdf, id=60, 657.41606pt x 269.08528pt>
 File: assets/computer_order.pdf Graphic file (type pdf)
 <use assets/computer_order.pdf>
-Package pdftex.def Info: assets/computer_order.pdf  used on input line 194.
-(pdftex.def)             Requested size: 338.58632pt x 178.5216pt.
- [3 <./assets/computer_order.pdf>] (build/report.aux)
+Package pdftex.def Info: assets/computer_order.pdf  used on input line 313.
+(pdftex.def)             Requested size: 435.32422pt x 178.17987pt.
+[4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.317 \end{document}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.317 \end{document}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.317 \end{document}
+                     <./assets/order_link.pdf> <./assets/order_step_4.pdf> <./assets/computer_order.pdf>] (build/report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -875,18 +949,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28313 strings out of 467525
- 548868 string characters out of 5425861
- 1064719 words of memory out of 5000000
- 56767 multiletter control sequences out of 15000+600000
- 679599 words of font info for 85 fonts, out of 8000000 for 9000
+ 28470 strings out of 467525
+ 551595 string characters out of 5425861
+ 1063719 words of memory out of 5000000
+ 56909 multiletter control sequences out of 15000+600000
+ 675336 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,9n,122p,487b,943s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on build/report.pdf (3 pages, 469575 bytes).
+ 113i,11n,122p,487b,1023s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on build/report.pdf (4 pages, 520332 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 28 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

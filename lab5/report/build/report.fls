@@ -251,6 +251,10 @@ INPUT /usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
 INPUT /usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
 INPUT /usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/share/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/share/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/share/texmf-dist/tex/latex/framed/framed.sty
+INPUT /usr/share/texmf-dist/tex/latex/framed/framed.sty
 INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
@@ -331,7 +335,6 @@ INPUT ./assets/employees_schema.png
 INPUT ./assets/employees_schema.png
 INPUT ./assets/employees_schema.png
 INPUT /usr/share/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-4.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT /usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
@@ -359,6 +362,21 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-4.tfm
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
+INPUT ./assets/order_step_2.pdf
+INPUT ./assets/order_step_2.pdf
+INPUT ./assets/order_step_2.pdf
+INPUT ./assets/order_step_2.pdf
+INPUT ./assets/order_step_2.pdf
+INPUT ./assets/order_link.pdf
+INPUT ./assets/order_link.pdf
+INPUT ./assets/order_link.pdf
+INPUT ./assets/order_link.pdf
+INPUT ./assets/order_link.pdf
+INPUT ./assets/order_step_4.pdf
+INPUT ./assets/order_step_4.pdf
+INPUT ./assets/order_step_4.pdf
+INPUT ./assets/order_step_4.pdf
+INPUT ./assets/order_step_4.pdf
 INPUT ./assets/computer_order.pdf
 INPUT ./assets/computer_order.pdf
 INPUT ./assets/computer_order.pdf
@@ -372,5 +390,4 @@ INPUT /usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb
-INPUT /usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
