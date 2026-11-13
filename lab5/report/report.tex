@@ -330,7 +330,7 @@ add table for many-to-many links
     the order of has to be stored.
 \end{framed}
 
-\paragraph{Step 1:} Raw requirments:
+\paragraph{Step 1:} Raw requirements:
 \begin{framed}
    \begin{verbatim}
 Magazine(
@@ -374,6 +374,7 @@ We can deduce the concepts that need to be stored:
         \item Article
             \begin{itemize}[noitemsep]
                 \item \texttt{articleId}
+                \item \texttt{title}
                 \item \texttt{pageOfBeginning}
                 \item \texttt{pageOfEnding}
             \end{itemize}
@@ -388,7 +389,6 @@ We can deduce the concepts that need to be stored:
                 \item \texttt{name}
                 \item \texttt{email}
                 \item \texttt{ascription}
-                \item \texttt{orderNo}
             \end{itemize}
     \end{itemize}
 \end{minipage}
@@ -399,10 +399,15 @@ We can deduce the concepts that need to be stored:
     \caption{Magazine database concepts with attributes}
 \end{figure}
 
+\noindent \texttt{orderNo} is not an attribute of \texttt{Author}: it
+gives the position of an author \emph{within one article}, so it
+describes the link between the two.
+
 \paragraph{Step 3:} Determine links between the concepts
 \begin{itemize}[noitemsep]
     \item Magazine and Article (has, one-to-many)
-    \item Article and Author (written by, many-to-many)
+    \item Article and Author (written by, many-to-many, the link
+        carries \texttt{orderNo})
 \end{itemize}
 
 \begin{figure}[H]
@@ -432,6 +437,7 @@ We can deduce the concepts that need to be stored:
         \item Article
             \begin{itemize}[noitemsep, leftmargin=1em]
                 \item \texttt{articleId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{title}: {\small\texttt{VARCHAR(200)}}
                 \item \texttt{pageOfBeginning}: {\small\texttt{INT}}
                 \item \texttt{pageOfEnding}: {\small\texttt{INT}}
             \end{itemize}
@@ -446,7 +452,6 @@ We can deduce the concepts that need to be stored:
                 \item \texttt{name}: {\small\texttt{VARCHAR(50)}}
                 \item \texttt{email}: {\small\texttt{VARCHAR(50)}}
                 \item \texttt{ascription}: {\small\texttt{VARCHAR(100)}}
-                \item \texttt{orderNo}: {\small\texttt{INT}}
             \end{itemize}
     \end{itemize}
 \end{minipage}
@@ -454,18 +459,27 @@ We can deduce the concepts that need to be stored:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{assets/magazine_step_4.pdf}
-    \caption{Order's concepts with links and attributes}
+    \caption{Magazine's concepts with links and attribute types}
 \end{figure}
 
 \paragraph{Step 5:} Solve foreign key links
 
 \noindent Add primary key, add foreign key for one-to-many links and
 add table for many-to-many links
+\begin{itemize}[noitemsep]
+    \item The many-to-many link becomes the table
+        \texttt{ArticleAuthor}, whose composite primary key is the
+        pair of foreign keys \underline{\texttt{articleId}},
+        \underline{\texttt{authorId}}.
+    \item \texttt{orderNo} moves into \texttt{ArticleAuthor}, because
+        it depends on the whole (article, author) pair.
+    \item \texttt{Article.title} is \texttt{UNIQUE}.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{assets/magazine_schema.pdf}
-    \caption{Order's concepts with links and attributes}
+    \caption{Magazine database schema}
 \end{figure}
 
 \end{document}

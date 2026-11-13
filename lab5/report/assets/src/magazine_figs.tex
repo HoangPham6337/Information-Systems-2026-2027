@@ -1,0 +1,115 @@
+% Draw.io-style ER tables (matches "magazine (1).drawio": 30px header/rows, 200px+ wide,
+% PK bold+underlined, entityRelation elbow edges, "1" label + crow's foot).
+% Build: ./build.sh   (produces ../magazine_{step_2,link,step_4,schema}.pdf)
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usetikzlibrary{calc}
+
+\definecolor{fMag}{HTML}{1BA1E2}\definecolor{sMag}{HTML}{006EAF}
+\definecolor{fArt}{HTML}{60A917}\definecolor{sArt}{HTML}{2D7600}
+\definecolor{fAut}{HTML}{008A00}\definecolor{sAut}{HTML}{005700}
+
+% \tbl{id}{fill}{stroke}{x}{width}{rows}{tag column width}{title}   (1 unit = 1 draw.io px)
+\newcommand{\tbl}[8]{%
+  \expandafter\gdef\csname x@#1\endcsname{#4}%
+  \expandafter\gdef\csname w@#1\endcsname{#5}%
+  \expandafter\gdef\csname t@#1\endcsname{#7}%
+  \path[draw=#3, fill=#2, line width=.75pt] (#4,0) rectangle ++(#5,-30);
+  \node[text=white, font=\bfseries] at (#4+#5/2,-15) {#8};
+  \draw[draw=#3, line width=.75pt] (#4,-30) rectangle ++(#5,-30*#6);
+}
+% \trow{id}{k}{tag}{text}  -- k-th row (1-based); text may use \textbf / \underline
+\newcommand{\trow}[4]{%
+  \pgfmathsetmacro{\yc}{-15-30*#2}%
+  \edef\xx{\csname x@#1\endcsname}\edef\ww{\csname w@#1\endcsname}\edef\tw{\csname t@#1\endcsname}%
+  \coordinate (#1-#2-w) at (\xx,\yc);
+  \coordinate (#1-#2-e) at (\xx+\ww,\yc);
+  \ifx\relax#3\relax\else\node at (\xx+\tw/2+2,\yc) {#3};\fi
+  \pgfmathsetmacro{\off}{\tw+6}%
+  \node[anchor=west, inner sep=0pt] at (\xx+\off,\yc) {#4};
+}
+\newcommand{\pkline}[2]{\pgfmathsetmacro{\yl}{-30-30*#2}%
+  \draw[line width=.75pt] (\csname x@#1\endcsname,\yl) -- ++(\csname w@#1\endcsname,0);}
+\newcommand{\pk}[1]{\textbf{\underline{#1}}}
+% crow's foot with bar at #1; #2 = -1 if the line arrives from the left, +1 from the right
+\newcommand{\crow}[2]{\draw[line width=.75pt]
+  ($(#1)+(#2*12,0)$) -- ($(#1)+(0,6)$)
+  ($(#1)+(#2*12,0)$) -- ($(#1)+(0,-6)$)
+  ($(#1)+(#2*12,0)$) -- (#1)
+  ($(#1)+(#2*17,6)$) -- ($(#1)+(#2*17,-6)$);}
+\newcommand{\lab}[3]{\node at ($(#1)+(#2*11,9)$) {#3};}
+\newcommand{\edge}[2]{\coordinate (xm) at ($(#1)!.5!(#2)$);
+  \draw[line width=.75pt] (#1) -- (xm |- #1) -- (xm |- #2) -- (#2);}
+
+\begin{document}
+\tikzset{every picture/.style={x=0.75pt,y=0.75pt,font=\fontsize{9}{10}\selectfont}}
+\ifcase\fig\relax
+% ---------------- 0: step 2 (attributes only) ----------------
+\begin{tikzpicture}
+  \tbl{M}{fMag}{sMag}{0}{190}{5}{0}{Magazine}
+  \trow{M}{1}{}{\pk{magazineId}}\pkline{M}{1}
+  \trow{M}{2}{}{title}\trow{M}{3}{}{ISSN}\trow{M}{4}{}{number}\trow{M}{5}{}{year}
+  \tbl{A}{fArt}{sArt}{290}{190}{4}{0}{Article}
+  \trow{A}{1}{}{\pk{articleId}}\pkline{A}{1}
+  \trow{A}{2}{}{title}\trow{A}{3}{}{pageOfBeginning}\trow{A}{4}{}{pageOfEnding}
+  \tbl{U}{fAut}{sAut}{580}{190}{4}{0}{Author}
+  \trow{U}{1}{}{\pk{authorId}}\pkline{U}{1}
+  \trow{U}{2}{}{name}\trow{U}{3}{}{email}\trow{U}{4}{}{ascription}
+\end{tikzpicture}
+\or
+% ---------------- 1: step 3 (links) ----------------
+\begin{tikzpicture}
+  \tbl{M}{fMag}{sMag}{0}{190}{5}{0}{Magazine}
+  \trow{M}{1}{}{\pk{magazineId}}\pkline{M}{1}
+  \trow{M}{2}{}{title}\trow{M}{3}{}{ISSN}\trow{M}{4}{}{number}\trow{M}{5}{}{year}
+  \tbl{A}{fArt}{sArt}{290}{190}{4}{0}{Article}
+  \trow{A}{1}{}{\pk{articleId}}\pkline{A}{1}
+  \trow{A}{2}{}{title}\trow{A}{3}{}{pageOfBeginning}\trow{A}{4}{}{pageOfEnding}
+  \tbl{U}{fAut}{sAut}{580}{190}{4}{0}{Author}
+  \trow{U}{1}{}{\pk{authorId}}\pkline{U}{1}
+  \trow{U}{2}{}{name}\trow{U}{3}{}{email}\trow{U}{4}{}{ascription}
+  \edge{M-1-e}{A-1-w}\crow{A-1-w}{-1}\lab{M-1-e}{1}{1}
+  \edge{A-1-e}{U-1-w}\crow{A-1-e}{1}\crow{U-1-w}{-1}
+  \node[font=\fontsize{8}{9}\selectfont\itshape] at ($(A-1-e)!.5!(U-1-w)+(0,9)$) {orderNo};
+\end{tikzpicture}
+\or
+% ---------------- 2: step 4 (types) ----------------
+\begin{tikzpicture}
+  \tbl{M}{fMag}{sMag}{0}{200}{5}{0}{Magazine}
+  \trow{M}{1}{}{\pk{magazineId : VARCHAR(50)}}\pkline{M}{1}
+  \trow{M}{2}{}{title : VARCHAR(100)}\trow{M}{3}{}{ISSN : CHAR(8)}\trow{M}{4}{}{number : INT}\trow{M}{5}{}{year : INT}
+  \tbl{A}{fArt}{sArt}{300}{200}{4}{0}{Article}
+  \trow{A}{1}{}{\pk{articleId : VARCHAR(50)}}\pkline{A}{1}
+  \trow{A}{2}{}{title : VARCHAR(200)}\trow{A}{3}{}{pageOfBeginning : INT}\trow{A}{4}{}{pageOfEnding : INT}
+  \tbl{U}{fAut}{sAut}{600}{210}{4}{0}{Author}
+  \trow{U}{1}{}{\pk{authorId : VARCHAR(50)}}\pkline{U}{1}
+  \trow{U}{2}{}{name : VARCHAR(50)}\trow{U}{3}{}{email : VARCHAR(50)}\trow{U}{4}{}{ascription : VARCHAR(100)}
+  \edge{M-1-e}{A-1-w}\crow{A-1-w}{-1}\lab{M-1-e}{1}{1}
+  \edge{A-1-e}{U-1-w}\crow{A-1-e}{1}\crow{U-1-w}{-1}
+  \node[font=\fontsize{8}{9}\selectfont\itshape] at ($(A-1-e)!.5!(U-1-w)+(0,9)$) {orderNo};
+\end{tikzpicture}
+\or
+% ---------------- 3: step 5 (final schema) ----------------
+\begin{tikzpicture}
+  \tbl{M}{fMag}{sMag}{0}{200}{5}{30}{Magazine}
+  \trow{M}{1}{\textbf{PK}}{\pk{magazineId : VARCHAR(50)}}\pkline{M}{1}
+  \trow{M}{2}{}{title : VARCHAR(100)}\trow{M}{3}{}{ISSN : CHAR(8)}\trow{M}{4}{}{number : INT}\trow{M}{5}{}{year : INT}
+  \tbl{A}{fArt}{sArt}{300}{230}{5}{30}{Article}
+  \trow{A}{1}{\textbf{PK}}{\pk{articleId : VARCHAR(50)}}\pkline{A}{1}
+  \trow{A}{2}{FK}{magazineId : VARCHAR(50)}
+  \trow{A}{3}{}{title : VARCHAR(200) UNIQUE}\trow{A}{4}{}{pageOfBeginning : INT}\trow{A}{5}{}{pageOfEnding : INT}
+  \tbl{X}{fAut}{sAut}{630}{250}{3}{54}{ArticleAuthor}
+  \trow{X}{1}{\textbf{PK,FK}}{\pk{articleId : VARCHAR(50)}}
+  \trow{X}{2}{\textbf{PK,FK}}{\pk{authorId : VARCHAR(50)}}\pkline{X}{2}
+  \trow{X}{3}{}{orderNo : INT}
+  \tbl{U}{fAut}{sAut}{970}{220}{4}{30}{Author}
+  \trow{U}{1}{\textbf{PK}}{\pk{authorId : VARCHAR(50)}}\pkline{U}{1}
+  \trow{U}{2}{}{name : VARCHAR(50)}\trow{U}{3}{}{email : VARCHAR(50)}\trow{U}{4}{}{ascription : VARCHAR(100)}
+  \edge{M-1-e}{A-2-w}\crow{A-2-w}{-1}\lab{M-1-e}{1}{1}
+  \edge{A-1-e}{X-1-w}\crow{X-1-w}{-1}\lab{A-1-e}{1}{1}
+  \edge{U-1-w}{X-2-e}\crow{X-2-e}{1}\lab{U-1-w}{-1}{1}
+\end{tikzpicture}
+\fi
+\end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.11.8)  14 NOV 2026 00:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.11.6)  14 NOV 2026 01:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -955,57 +955,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 355--357
 
  []
 
-<assets/magazine_step_2.pdf, id=113, 478.66827pt x 131.53139pt>
+<assets/magazine_step_2.pdf, id=113, 623.44919pt x 131.53139pt>
 File: assets/magazine_step_2.pdf Graphic file (type pdf)
 <use assets/magazine_step_2.pdf>
 Package pdftex.def Info: assets/magazine_step_2.pdf  used on input line 398.
-(pdftex.def)             Requested size: 435.32422pt x 119.62349pt.
+(pdftex.def)             Requested size: 435.32422pt x 91.84253pt.
 [5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.406 \end{itemize}
-                    <./assets/magazine_step_2.pdf>]
-<assets/magazine_link.pdf, id=136, 478.66827pt x 131.53139pt>
+l.409     \item A
+                 rticle and Author (written by, many-to-many, the link <./assets/magazine_step_2.pdf>]
+<assets/magazine_link.pdf, id=137, 623.44919pt x 131.53139pt>
 File: assets/magazine_link.pdf Graphic file (type pdf)
 <use assets/magazine_link.pdf>
-Package pdftex.def Info: assets/magazine_link.pdf  used on input line 410.
-(pdftex.def)             Requested size: 435.32422pt x 119.62349pt.
+Package pdftex.def Info: assets/magazine_link.pdf  used on input line 415.
+(pdftex.def)             Requested size: 435.32422pt x 91.84253pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--415
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 []\T1/zi4/m/n/10.95 magazineId\T1/lmr/m/n/10.95 :
  []
 
-<assets/magazine_step_4.pdf, id=137, 522.03032pt x 131.53139pt>
+<assets/magazine_step_4.pdf, id=138, 623.44919pt x 131.53139pt>
 File: assets/magazine_step_4.pdf Graphic file (type pdf)
 <use assets/magazine_step_4.pdf>
-Package pdftex.def Info: assets/magazine_step_4.pdf  used on input line 456.
-(pdftex.def)             Requested size: 435.32422pt x 109.69083pt.
-<assets/magazine_schema.pdf, id=138, 883.38025pt x 131.53139pt>
+Package pdftex.def Info: assets/magazine_step_4.pdf  used on input line 461.
+(pdftex.def)             Requested size: 435.32422pt x 91.84253pt.
+<assets/magazine_schema.pdf, id=139, 781.96138pt x 131.53139pt>
 File: assets/magazine_schema.pdf Graphic file (type pdf)
 <use assets/magazine_schema.pdf>
-Package pdftex.def Info: assets/magazine_schema.pdf  used on input line 467.
-(pdftex.def)             Requested size: 483.69687pt x 72.01935pt.
+Package pdftex.def Info: assets/magazine_schema.pdf  used on input line 481.
+(pdftex.def)             Requested size: 483.69687pt x 81.36195pt.
 [6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.471 \end{document}
+l.485 \end{document}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.471 \end{document}
+l.485 \end{document}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.471 \end{document}
+l.485 \end{document}
                      <./assets/magazine_link.pdf> <./assets/magazine_step_4.pdf> <./assets/magazine_schema.pdf>] (build/report.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -1015,18 +1015,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28512 strings out of 467525
- 552767 string characters out of 5425861
- 1063717 words of memory out of 5000000
- 56939 multiletter control sequences out of 15000+600000
- 675336 words of font info for 84 fonts, out of 8000000 for 9000
+ 28514 strings out of 467525
+ 552793 string characters out of 5425861
+ 1063718 words of memory out of 5000000
+ 56940 multiletter control sequences out of 15000+600000
+ 679599 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,11n,122p,487b,1023s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on build/report.pdf (6 pages, 621386 bytes).
+</usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/share/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on build/report.pdf (6 pages, 637740 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 165 compressed objects within 2 object streams
+ 237 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
  34 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
