@@ -482,4 +482,190 @@ add table for many-to-many links
     \caption{Magazine database schema}
 \end{figure}
 
+\newpage
+\section*{Labwork 2}
+\begin{framed}
+    A Non-Government Organization (NGO) wants to prepare a database
+    for all its projects. It has diverse head offices in several
+    countries which manage and coordinate the projects of that country.
+
+    For head offices, an identifier, the city and country where it is
+    located, its address, a phone number and the name of the director
+    are stored. Every head office manages a set of projects, with a
+    code, a title, dates of beginning and end, the assigned budget
+    and the name of the person in charge. One project is formed by a
+    set of actions that can affect to several cities.
+
+    We want to know what actions are realised in which city, storing
+    its name, country and number of inhabitants. We also need an
+    identifier to differentiate them. Also there is a need of
+    investment of the project that corresponds to the city and a
+    small description of the action.
+\end{framed}
+
+\paragraph{Step 1:} Raw requirements
+
+\begin{framed}
+\begin{verbatim}
+HeadOffice(
+    identifier, city, country, address, phoneNumber, directorName,
+    Project(
+        code, title, beginningDate, endDate, budget, personInChargeName,
+        Action(
+            description,
+            City(
+                identifier, name, country, numberOfInhabitants,
+                investment
+            )
+        )
+    )
+)
+\end{verbatim}
+\end{framed}
+
+We can deduce the concepts that need to be stored:
+\begin{itemize}[noitemsep]
+    \item HeadOffice
+    \item Project
+    \item Action
+    \item City
+\end{itemize}
+
+\noindent The \texttt{investment} is not a concept of its own: it is
+the amount invested by an action \emph{in one city}, so it describes
+the link between Action and City.
+
+\paragraph{Step 2:} Determine attributes of each concepts
+\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/ngo_step_2.pdf}
+    \caption{NGO database concepts with attributes}
+\end{figure}
+
+\noindent
+\begin{minipage}[t]{0.49\textwidth}
+    \begin{itemize}[noitemsep]
+        \item HeadOffice
+            \begin{itemize}[noitemsep]
+                \item \texttt{headOfficeId}
+                \item \texttt{city}
+                \item \texttt{country}
+                \item \texttt{address}
+                \item \texttt{phoneNumber}
+                \item \texttt{directorName}
+            \end{itemize}
+        \item Action
+            \begin{itemize}[noitemsep]
+                \item \texttt{actionId}
+                \item \texttt{description}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Project
+            \begin{itemize}[noitemsep]
+                \item \texttt{projectCode}
+                \item \texttt{title}
+                \item \texttt{beginningDate}
+                \item \texttt{endDate}
+                \item \texttt{budget}
+                \item \texttt{personInChargeName}
+            \end{itemize}
+        \item City
+            \begin{itemize}[noitemsep]
+                \item \texttt{cityId}
+                \item \texttt{name}
+                \item \texttt{country}
+                \item \texttt{numberOfInhabitants}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+
+\paragraph{Step 3:} Determine links between the concepts
+\begin{itemize}[noitemsep]
+    \item HeadOffice and Project (manages, one-to-many)
+    \item Project and Action (formed by, one-to-many)
+    \item Action and City (affects, many-to-many, the link carries
+        \texttt{investment})
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/ngo_link.pdf}
+    \caption{NGO's links between concepts}
+\end{figure}
+
+\paragraph{Step 4:} Determine types of each concept attribute\\
+
+\noindent
+\begin{minipage}[t]{0.49\textwidth}
+    \begin{itemize}[noitemsep]
+        \item HeadOffice
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{headOfficeId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{city}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{country}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{address}: {\small\texttt{VARCHAR(100)}}
+                \item \texttt{phoneNumber}: {\small\texttt{VARCHAR(20)}}
+                \item \texttt{directorName}: {\small\texttt{VARCHAR(50)}}
+            \end{itemize}
+        \item Action
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{actionId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{description}: {\small\texttt{VARCHAR(255)}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Project
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{projectCode}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{title}: {\small\texttt{VARCHAR(100)}}
+                \item \texttt{beginningDate}: {\small\texttt{DATE}}
+                \item \texttt{endDate}: {\small\texttt{DATE}}
+                \item \texttt{budget}: {\small\texttt{DECIMAL(15,2)}}
+                \item \texttt{personInChargeName}: {\small\texttt{VARCHAR(50)}}
+            \end{itemize}
+        \item City
+            \begin{itemize}[noitemsep, leftmargin=1em]
+                \item \texttt{cityId}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{name}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{country}: {\small\texttt{VARCHAR(50)}}
+                \item \texttt{numberOfInhabitants}: {\small\texttt{INT}}
+            \end{itemize}
+    \end{itemize}
+\end{minipage}
+
+\vspace{\baselineskip}
+\noindent Action many-to-many City - \texttt{investment}:
+\texttt{DECIMAL(15,2)}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{assets/ngo_step_4.pdf}
+    \caption{NGO concepts with links and attribute types}
+\end{figure}
+
+\paragraph{Step 5:} Solve foreign key links
+Add primary key, add foreign key for one-to-many links and add table
+for many-to-many links
+\begin{itemize}
+    \item The many-to-many link becomes the \texttt{ActionCity} table,
+        whose composite primary key is the pair of foreign keys
+        \texttt{actionId} and \texttt{cityId}.
+    \item \texttt{investment} moves into \texttt{ActionCity}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{assets/ngo_schema.pdf}
+    \caption{NGO database schema}
+\end{figure}
 \end{document}
